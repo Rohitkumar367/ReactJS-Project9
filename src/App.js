@@ -1,9 +1,19 @@
 import React from 'react';
+import Navbar from './components/Navbar'
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Cart from './pages/Cart';
 
 function App() {
   return (
     <div>
-      hello Rohit
+      <div>
+        <Navbar></Navbar>
+      </div>
+      <Routes>
+        <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/cart' element={<Cart></Cart>}></Route>
+      </Routes>
     </div>
   );
 }

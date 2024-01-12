@@ -1,7 +1,18 @@
 import React from 'react'
 import {FcDeleteDatabase} from 'react-icons/fc'
+import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify';
+import {remove} from '../redux/Slices/CartSlice'
 
 const CartItem = ({item, itemIndex}) => {
+
+  const dispatch = useDispatch();
+
+  const removeFromCart = () => {
+    dispatch(remove(item.id));
+    toast.success("Item removed")
+  }
+
   return (
     <div>
       
@@ -15,7 +26,7 @@ const CartItem = ({item, itemIndex}) => {
           <h1>{item.description}</h1>
           <div>
             <p>{item.price}</p>
-            <div>
+            <div onClick={removeFromCart}>
               <FcDeleteDatabase></FcDeleteDatabase>
             </div>
           </div>
